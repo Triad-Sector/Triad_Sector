@@ -278,7 +278,7 @@ namespace Content.Server.Explosion.EntitySystems
             var deathMessage = Loc.GetString(component.DeathMessage, ("user", implanted.ImplantedEntity.Value), ("specie", speciesText), ("grid", gridText), ("position", posText));
 
             // Triad: Add time since death
-            var deathTime = "";
+            var deathTime = string.Empty;
 
             if (component.DeathTime != TimeSpan.Zero)
             {
@@ -301,25 +301,34 @@ namespace Content.Server.Explosion.EntitySystems
                 switch (mobstate.CurrentState)
                 {
                     case MobState.Critical:
-                    {
-                        // _radioSystem.SendRadioMessage(uid, critMessage, radioChannel, uid, null, language);
-                        var message = mobstate.PreviousState == MobState.Dead ? reviveMessage : critMessage; // Mono -> Triad
-                        _radioSystem.SendRadioMessage(uid, message , radioChannel, uid, null, language); // Mono -> Triad
-                        break;
-                    }
+                        {
+                            // _radioSystem.SendRadioMessage(uid, critMessage, radioChannel, uid, null, language);
+                            var message = mobstate.PreviousState == MobState.Dead ? reviveMessage : critMessage; // Triad
+                            _radioSystem.SendRadioMessage(uid, message, radioChannel, uid, null, language); // Triad
+                            break;
+                        }
                     case MobState.Dead:
-                    {
-                        _radioSystem.SendRadioMessage(uid, component.DeathTime != TimeSpan.Zero ? stillDeathMessage : deathMessage, radioChannel, uid, null, language); // Triad
-                        // Triad: Set information on initial rattle and handles backup rattle
-                        component.NextTrigger = _timing.CurTime + component.RetriggerDelay;
-                        component.StartBackupTrigger = _timing.CurTime + component.BackupTriggerDelay; // Sets time for backup to start
-                        if (component.DeathTime == TimeSpan.Zero)
-                            component.DeathTime = _timing.CurTime;
-                        if (_timing.CurTime >= component.StartBackupTrigger && component.BackupTrigger == true) // Pings backup rattle if the time has been long enough and the implant has it
-                            _radioSystem.SendRadioMessage(uid, component.DeathTime != TimeSpan.Zero ? stillDeathMessage : deathMessage, backupRadioChannel, uid, null, language);
-                        // End Triad
-                        break;
-                    }
+                        {
+                            var message = component.DeathTime != TimeSpan.Zero ? stillDeathMessage : deathMessage;
+
+                            // Channel is medical if below the backup trigger threshold
+                            // Otherwise, it sends it to broadband
+                            var selectedChannel = component.BackupTriggerThreshold != TimeSpan.Zero
+                                && _timing.CurTime >= component.BackupTriggerThreshold
+                                ? radioChannel : backupRadioChannel;
+
+                            _radioSystem.SendRadioMessage(uid, message, selectedChannel, uid, null, language);
+                            component.NextTrigger = _timing.CurTime + component.RetriggerDelay;
+
+                            if (component.DeathTime == TimeSpan.Zero)
+                            {
+                                component.DeathTime = _timing.CurTime;
+                                component.BackupTriggerThreshold = _timing.CurTime + component.BackupTriggerDelay;
+                            }
+
+                            // End Triad
+                            break;
+                        }
                 }
             }
             args.Handled = true;
