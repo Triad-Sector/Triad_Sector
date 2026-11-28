@@ -133,6 +133,40 @@
     - Draconic
 
 - type: entity
+  id: TauTranslator
+  parent: [ TranslatorPoweredBase ]
+  name: Tau translator
+  description: Translates speech between Tau and Galactic Common. Like a true Coalition citizen!
+  components:
+  - type: HandheldTranslator
+    spoken:
+    - TauCetiBasic
+    - Tau
+    understood:
+    - TauCetiBasic
+    - Tau
+    requires:
+    - TauCetiBasic
+    - Tau
+
+- type: entity
+  id: TriadianTranslator
+  parent: [ TranslatorPoweredBase ]
+  name: Triadian translator
+  description: Translates speech between Triadian and Galactic Common. Like a true Triad citizen!
+  components:
+  - type: HandheldTranslator
+    spoken:
+    - TauCetiBasic
+    - Triadian
+    understood:
+    - TauCetiBasic
+    - Triadian
+    requires:
+    - TauCetiBasic
+    - Triadian
+
+- type: entity
   id: SolCommonTranslator
   parent: [ TranslatorPoweredBase ]
   name: Sol Common translator
@@ -244,21 +278,38 @@
     setLanguageOnInteract: false
 
 - type: entity
-  id: ValyrianStandardTranslator
+  id: BirdsongTranslator
   parent: [ TranslatorPoweredBase ]
-  name: Valyrian Standard translator
-  description: Translates speech between Valyrian Standard and Tau-Ceti Basic. For talking to Harpies!
+  name: Birdsong translator
+  description: Translates speech between Birdsong and Tau-Ceti Basic. For talking to Harpies!
   components:
   - type: HandheldTranslator
     spoken:
     - TauCetiBasic
-    - ValyrianStandard
+    - Birdsong
     understood:
     - TauCetiBasic
-    - ValyrianStandard
+    - Birdsong
     requires:
     - TauCetiBasic
-    - ValyrianStandard
+    - Birdsong
+
+- type: entity
+  id: ScratchTranslator
+  parent: [ TranslatorPoweredBase ]
+  name: Scratch translator
+  description: Translates speech between Scratch and Tau-Ceti Basic. For talking to Avalis!
+  components:
+  - type: HandheldTranslator
+    spoken:
+    - TauCetiBasic
+    - Scratch
+    understood:
+    - TauCetiBasic
+    - Scratch
+    requires:
+    - TauCetiBasic
+    - Scratch
 
 - type: entity
   id: AzazibaTranslator

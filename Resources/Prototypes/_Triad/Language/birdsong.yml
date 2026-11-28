@@ -1,0 +1,26 @@
+# Language spoken by Harpies.
+# Based on music as opposed to a language spoken.
+- type: language
+  id: Birdsong
+  isVisibleLanguage: true
+  speech:
+    fontId: Default
+    fontSize: 14
+    color: "#46ce83"
+  obfuscation:
+    !type:SyllableObfuscation
+    minSyllables: 2
+    maxSyllables: 5
+    replacement:
+    - ♪
+    - ♫
+    - ♪♫
+    - ♫♪
+    - ♪~
+    - ~♪
+    - ♫~
+    - ~♫
+    - ~
+    - ♥
+    - ♥~
+    - ~♥

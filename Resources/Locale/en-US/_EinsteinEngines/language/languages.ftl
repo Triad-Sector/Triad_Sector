@@ -7,9 +7,6 @@ language-Psychomantic-description = Pure meaning, free from the tyranny of prima
 language-Bubblish-name = Bubblish
 language-Bubblish-description = The language of Slimes. Being a mixture of bubbling noises and pops it's very difficult to speak for humans without the use of mechanical aids.
 
-language-RootSpeak-name = Rootspeak
-language-RootSpeak-description = The strange whistling-style language spoken by the Diona.
-
 language-Hydraspeak-name = Hy'drav'tha
 language-Hydraspeak-description =
     A Mix of warbles, trills and chirps, with heavy tonal shifts and pitch changes make up this unusual language.
@@ -87,11 +84,6 @@ language-Sign-description =
 language-Marish-name = Marish
 language-Marish-description =  A language spoken only by Shadekin, one that is unable to be replicated by normal tongues.
 
-language-ValyrianStandard-name = Valyrian Standard
-language-ValyrianStandard-description =
-    A language descended from eastern european languages of old earth - Valyrian Standard is the commonly spoken tongue of Harpies brought up on their homeworld of Valyrian 4b
-    It is rarely spoken outside of the worlds of its native speakers, and has in modern times been supplanted by the 'Conlangs of the Trans-Solar Federation.
-    Its speakers are those who wish to uphold the traditions and beliefs of ancient peoples from before the colonial era.
 
 language-Chittin-name = Chittin
 language-Chittin-description =
