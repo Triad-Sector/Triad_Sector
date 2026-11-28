@@ -102,7 +102,8 @@
       - Critical
       - Dead
     - type: Rattle
-      radioChannel: "Nfsd"
+      radioChannel: Nfsd
+      backupRadioChannel: Medical
       backupTrigger: true # Triad: Adds backup implant here. If delay needs to be extended, an extra variable can be added
       # language: "SolCommon" Triad - commented out
 
