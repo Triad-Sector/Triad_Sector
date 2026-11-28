@@ -4,7 +4,7 @@
   parent: BaseSubdermalImplant
   id: MedicalTrackingImplant
   name: medical tracking implant
-  description: This implant has a tracking device monitor for the Medical radio channel. After 10 minutes, it falls back to Broadband. # Triad: Updated desc
+  description: This implant has a tracking device monitor for the Medical radio channel. After 12 minutes, it falls back to Broadband. # Triad: Updated desc
   categories: [ HideSpawnMenu ]
   components:
     - type: SubdermalImplant
@@ -24,7 +24,7 @@
       - Critical
       - Dead
     - type: Rattle
-      radioChannel: "Medical"
+      radioChannel: Medical
       backupTrigger: true # Triad: Adds backup implanter here
 
 - type: entity
