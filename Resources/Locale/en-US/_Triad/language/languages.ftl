@@ -18,3 +18,17 @@ language-Triadian-description =
     Due to the overwhelming amount of Tau speakers in the Triad Sector, the language was proposed in 2814 by CDF higher-ups to make information breaches by the Coalition less effective.
     Phonetically, it sounds similar to Tau; but is almost incomprehensible to Tau speakers because of its extremely different structure. Very few words between Triadian and Tau are mutually shared.
     Nowadays, it is one of the official languages of the Triad Sector, spoken by the Triad Sector Government, TFA officials, and the TDF.
+
+language-RootSpeak-name = Rootspeak
+language-RootSpeak-description = The strange whistling-style language spoken by the Diona.
+
+language-Scratch-name = Scratch
+language-Scratch-description = 
+    A writing system mainly, Scratch can be spoken phonetically, with the sounds being clicks, chirps and chimes.
+    Between Avali, this is easily understandable, with dialogue being possible as long as the written form is known, but to others, it sounds like it's namesake.
+
+language-Birdsong-name = Birdsong
+language-Birdsong-description =
+    A language comprised of harmonic sounds and melodies, usually whistled or trilled out from the vocal cords. Common amongst Harpies due to their 
+    unique musical capabilities, meaning is able to be expressed through song rather than word. While the origins of Harpies may differ between 
+    individuals, the universal nature of music allows communication regardless of homeworld.

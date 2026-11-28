@@ -278,11 +278,11 @@ namespace Content.Server.Explosion.EntitySystems
             var deathMessage = Loc.GetString(component.DeathMessage, ("user", implanted.ImplantedEntity.Value), ("specie", speciesText), ("grid", gridText), ("position", posText));
 
             // Triad: Add time since death
-            var deathTime = "";
+            var deathTime = string.Empty;
 
-            if (component.DeathTime != TimeSpan.Zero)
+            if (component.DeathTime != null)
             {
-                var minutes = Math.Max(0, (int)(_timing.CurTime - component.DeathTime).TotalMinutes);
+                var minutes = Math.Max(0, (int)(_timing.CurTime - component.DeathTime).Value.TotalMinutes);
                 var suffix = minutes > 1 ? "s" : "";
                 deathTime = $"{minutes} minute{suffix}";
             }
@@ -295,27 +295,40 @@ namespace Content.Server.Explosion.EntitySystems
 
             if (mobstate.CurrentState != MobState.Alive)
             {
+                // Triad - Implant retriggering
                 var radioChannel = _prototypeManager.Index(component.RadioChannel);
+                var backupRadioChannel = _prototypeManager.Index(component.BackupRadioChannel);
                 var language = _prototypeManager.Index(component.Language);
                 switch (mobstate.CurrentState)
                 {
                     case MobState.Critical:
-                    {
-                        // _radioSystem.SendRadioMessage(uid, critMessage, radioChannel, uid, null, language);
-                        var message = mobstate.PreviousState == MobState.Dead ? reviveMessage : critMessage; // Mono -> Triad
-                        _radioSystem.SendRadioMessage(uid, message , radioChannel, uid, null, language); // Mono -> Triad
-                        break;
-                    }
+                        {
+                            // _radioSystem.SendRadioMessage(uid, critMessage, radioChannel, uid, null, language);
+                            var message = mobstate.PreviousState == MobState.Dead ? reviveMessage : critMessage; // Triad
+                            _radioSystem.SendRadioMessage(uid, message, radioChannel, uid, null, language); // Triad
+                            break;
+                        }
                     case MobState.Dead:
-                    {
-                        _radioSystem.SendRadioMessage(uid, component.DeathTime != TimeSpan.Zero ? stillDeathMessage : deathMessage, radioChannel, uid, null, language); // Triad
-                        // Triad: Set information on initial rattle
-                        component.NextTrigger = _timing.CurTime + component.RetriggerDelay;
-                        if (component.DeathTime == TimeSpan.Zero)
-                            component.DeathTime = _timing.CurTime;
-                        // End Triad
-                        break;
-                    }
+                        {
+                            var message = component.DeathTime != null ? stillDeathMessage : deathMessage;
+
+                            // Channel is medical if below the backup trigger threshold
+                            // Otherwise, it sends it to broadband
+                            var selectedChannel = _timing.CurTime >= component.BackupTriggerThreshold
+                                ? backupRadioChannel : radioChannel;
+
+                            _radioSystem.SendRadioMessage(uid, message, selectedChannel, uid, null, language);
+                            component.NextTrigger = _timing.CurTime + component.RetriggerDelay;
+
+                            if (component.DeathTime == null)
+                            {
+                                component.DeathTime = _timing.CurTime;
+                                component.BackupTriggerThreshold = _timing.CurTime + component.BackupTriggerDelay;
+                            }
+
+                            // End Triad
+                            break;
+                        }
                 }
             }
             args.Handled = true;

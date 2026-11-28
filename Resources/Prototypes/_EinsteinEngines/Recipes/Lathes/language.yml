@@ -40,6 +40,26 @@
     Gold: 50
 
 - type: latheRecipe
+  id: TauTranslator
+  result: TauTranslator
+  completetime: 2
+  materials:
+    Steel: 500
+    Glass: 100
+    Plastic: 50
+    Gold: 50
+
+- type: latheRecipe
+  id: TriadianTranslator
+  result: TriadianTranslator
+  completetime: 2
+  materials:
+    Steel: 500
+    Glass: 100
+    Plastic: 50
+    Gold: 50
+
+- type: latheRecipe
   id: SolCommonTranslator
   result: SolCommonTranslator
   completetime: 2
@@ -92,8 +112,18 @@
     Silver: 5
 
 - type: latheRecipe
-  id: ValyrianStandardTranslator
-  result: ValyrianStandardTranslator
+  id: BirdsongTranslator
+  result: BirdsongTranslator
+  completetime: 2
+  materials:
+    Steel: 500
+    Glass: 100
+    Plastic: 50
+    Gold: 50
+
+- type: latheRecipe
+  id: ScratchTranslator
+  result: ScratchTranslator
   completetime: 2
   materials:
     Steel: 500
@@ -242,8 +272,8 @@
     Silver: 50
 
 - type: latheRecipe
-  id: ValyrianStandardTranslatorImplanter
-  result: ValyrianStandardTranslatorImplanter
+  id: BirdsongTranslatorImplanter
+  result: BirdsongTranslatorImplanter
   completetime: 2
   materials:
     Steel: 500

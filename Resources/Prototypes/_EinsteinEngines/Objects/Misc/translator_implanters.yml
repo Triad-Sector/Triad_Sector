@@ -87,12 +87,12 @@
     implant: MofficTranslatorImplant
 
 - type: entity
-  id: ValyrianStandardTranslatorImplanter
+  id: BirdsongTranslatorImplanter
   parent: [ BaseTranslatorImplanter ]
-  name: valyrian standard translator implant
+  name: birdsong translator implant
   components:
   - type: Implanter
-    implant: ValyrianStandardTranslatorImplant
+    implant: BirdsongTranslatorImplant
 
 - type: entity
   id: AzazibaTranslatorImplanter

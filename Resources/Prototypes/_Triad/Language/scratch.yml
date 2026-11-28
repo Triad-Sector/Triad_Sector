@@ -1,0 +1,55 @@
+# Language spoken by Avali.
+# Awawi.
+- type: language
+  id: Scratch
+  isVisibleLanguage: true
+  speech:
+    color: "#ff850d"
+  obfuscation:
+    !type:SyllableObfuscation
+    minSyllables: 1
+    maxSyllables: 5
+    replacement:
+    - ra
+    - ya
+    - ma
+    - ha
+    - na
+    - ta
+    - sa
+    - ka
+    - a
+    - ri
+    - mi
+    - hi
+    - ni
+    - chi
+    - shi
+    - ki
+    - i
+    - ru
+    - yu
+    - mu
+    - fu
+    - tsu
+    - su
+    - ku
+    - u
+    - re
+    - me
+    - he
+    - ne
+    - te
+    - se
+    - ke
+    - e
+    - o
+    - ro
+    - yo
+    - mo
+    - ho
+    - no
+    - to
+    - so
+    - ko
+    - o
