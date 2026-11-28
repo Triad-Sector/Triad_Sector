@@ -47,7 +47,8 @@ shipyard-console-berth-row-class = {$class}
 shipyard-console-berth-occupant = | {$ship}
 shipyard-console-berth-occupant-class = | {$class}
 shipyard-console-berth-empty = empty
-
+shipyard-console-berth-row-empty = | Empty
+shipyard-console-berth-row-incoming = | {$ship}, if accepted
 
 shipyard-console-berth-incoming = {$ship}, if accepted
 shipyard-console-berth-buy-button = Buy berth

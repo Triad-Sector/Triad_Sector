@@ -1031,6 +1031,7 @@ public sealed partial class ShipyardSystem
             DeedOwnerUserId = DeedOwnerAccount(console),
             TransferOfferMinutes = offerMinutes,
             ImportableShips = console.CachedImportables,
+            ImportEnabled = enabled && _configManager.GetCVar(TriadCCVars.DrydockImportEnabled),
             DeedSale = DeedSaleFor(console.TargetIdSlot.ContainerSlot?.ContainedEntity, console.CachedDrydock.DeedShip),
         };
     }

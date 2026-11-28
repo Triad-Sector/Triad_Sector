@@ -184,6 +184,26 @@
                     <BoxContainer Name="DrydockTab"
                             Orientation="Vertical"
                             Margin="5 0 5 0">
+                        <!-- Triad -->
+                        <BoxContainer Name="DrydockViewRow"
+                                Orientation="Horizontal"
+                                Margin="2 6 2 0">
+                            <Button Name="ViewBerthButton"
+                                    Text="{Loc 'shipyard-console-view-berth'}"
+                                    StyleClasses="ButtonSquare"
+                                    ToggleMode="True"
+                                    MinWidth="90"/>
+                            <Button Name="ViewImportButton"
+                                    StyleClasses="ButtonSquare"
+                                    ToggleMode="True"
+                                    MinWidth="90"
+                                    Margin="3 0 0 0"
+                                    Visible="False"/>
+                        </BoxContainer>
+                        <BoxContainer Name="BerthView"
+                                Orientation="Vertical"
+                                HorizontalExpand="True"
+                                VerticalExpand="True">
                         <PanelContainer Name="DeedShipPanel"
                                 Visible="False"
                                 Margin="0 8 0 6">
@@ -320,6 +340,30 @@
                                     </ScrollContainer>
                                 </PanelContainer>
                             </PanelContainer>
+                        </BoxContainer>
+                        </BoxContainer>
+                        <!-- Triad -->
+                        <BoxContainer Name="ImportView"
+                                Orientation="Vertical"
+                                HorizontalExpand="True"
+                                VerticalExpand="True"
+                                Visible="False"
+                                Margin="0 6 0 6">
+                            <ScrollContainer HorizontalExpand="True"
+                                    VerticalExpand="True"
+                                    HScrollEnabled="False">
+                                <BoxContainer Name="Imports"
+                                        Orientation="Vertical"
+                                        HorizontalExpand="True"/>
+                            </ScrollContainer>
+                            <Label Name="NoImportsLabel"
+                                    Text="{Loc 'shipyard-console-import-none'}"
+                                    Modulate="#777777"
+                                    Align="Center"
+                                    VAlign="Center"
+                                    HorizontalExpand="True"
+                                    VerticalExpand="True"
+                                    Visible="False"/>
                         </BoxContainer>
                     </BoxContainer>
                     <!-- Triad: this just shows whenever a criteria is met -->

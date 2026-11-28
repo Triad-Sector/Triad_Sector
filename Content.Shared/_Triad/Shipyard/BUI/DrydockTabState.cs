@@ -60,6 +60,8 @@ public sealed record DrydockTabState
     /// </summary>
     public List<DrydockImportShipInfo> ImportableShips = new();
 
+    public bool ImportEnabled;
+
     /// <summary>The operator's ships in the impound lot, for the cards above the berth list.</summary>
     public List<DrydockImpoundedShipInfo> ImpoundedShips = new();
 

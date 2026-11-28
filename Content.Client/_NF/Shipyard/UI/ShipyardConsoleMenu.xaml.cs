@@ -265,6 +265,13 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
         Tabs.SetTabTitle(0, Loc.GetString("shipyard-console-tab-purchase"));
         Tabs.SetTabTitle(1, Loc.GetString("shipyard-console-tab-drydock"));
         BuyBerthButton.Text = Loc.GetString("shipyard-console-berth-buy-button") + DrydockText.Caret;
+        // Split them into two so easy to read
+        var viewGroup = new ButtonGroup();
+        ViewBerthButton.Group = viewGroup;
+        ViewImportButton.Group = viewGroup;
+        ViewBerthButton.OnPressed += _ => SetDrydockView(importView: false);
+        ViewImportButton.OnPressed += _ => SetDrydockView(importView: true);
+        SetDrydockView(importView: false);
         // The lockout's two big lines at the sizes they were designed at; Nano names no face that large.
         LockoutTitle.FontOverride = _resourceCache.NotoStack("Bold", 44);
         LockoutSubtitle.FontOverride = _resourceCache.NotoStack(size: 14);
@@ -732,12 +739,26 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
 
         PopulateBuyMenu(state.Drydock.BerthPrices);
 
-        BerthSummaryLabel.Text = Loc.GetString("shipyard-console-berths-free", ("free", _freeBerths.Count), ("total", state.Drydock.Berths.Count))
-            // Triad: legacy import. Only said while there is something to import, so the line stays
-            // as short as it is on a console with nothing waiting.
-            + (state.Drydock.ImportableShips.Count > 0
-                ? Loc.GetString("shipyard-console-import-summary", ("count", state.Drydock.ImportableShips.Count))
-                : string.Empty);
+        BerthSummaryLabel.Text = Loc.GetString("shipyard-console-berths-free", ("free", _freeBerths.Count), ("total", state.Drydock.Berths.Count));
+
+        _importEnabled = state.Drydock.ImportEnabled;
+        ViewImportButton.Text = Loc.GetString("shipyard-console-view-import", ("count", state.Drydock.ImportableShips.Count));
+        SetDrydockView(_importView);
+    }
+
+    private bool _importEnabled;
+    private bool _importView;
+
+    private void SetDrydockView(bool importView)
+    {
+        _importView = importView && _importEnabled;
+
+        DrydockViewRow.Visible = _importEnabled;
+        ViewImportButton.Visible = _importEnabled;
+        BerthView.Visible = !_importView;
+        ImportView.Visible = _importView;
+        ViewBerthButton.Pressed = !_importView;
+        ViewImportButton.Pressed = _importView;
     }
 
     /// <summary>
@@ -875,20 +896,20 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
         RetrieveButton.Disabled = true;
     }
 
-    /// <summary>
-    /// Triad: legacy import. Old saves sit above the berths, because they are not in one yet: the
-    /// import grants the berth. Drawn only when the server has agreed to take them, so an empty list
-    /// is the whole of the feature being off, out of budget, or nothing importable on this machine.
-    /// </summary>
+    // Triad
     private void PopulateImports(List<DrydockImportShipInfo> importable)
     {
+        Imports.RemoveAllChildren();
+
         foreach (var ship in importable)
         {
             var row = new DrydockImportRow(ship);
             row.ImportButton.Disabled = !_validId;
             row.ImportButton.OnPressed += _ => OnImport?.Invoke(row.FileId, ship.Name);
-            Berths.AddChild(row);
+            Imports.AddChild(row);
         }
+
+        NoImportsLabel.Visible = importable.Count == 0;
     }
 
     /// <summary>
@@ -902,7 +923,7 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
         _import.Begin();
         _importingRow = null;
 
-        foreach (var other in Berths.Children.OfType<DrydockImportRow>())
+        foreach (var other in Imports.Children.OfType<DrydockImportRow>())
         {
             other.ImportButton.Disabled = true;
             if (other.FileId == fileId)
