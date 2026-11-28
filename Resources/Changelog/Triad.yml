@@ -6429,3 +6429,12 @@ Entries:
   id: 2752
   time: '2026-11-27T01:09:28.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/838
+- author: creaturecomforts-now
+  changes:
+    - type: Add
+      message: >-
+        Medical trackers now fallback to broadband channel after 10 minutes. TDF
+        implanters fallback to Medical.
+  id: 2753
+  time: '2026-11-28T01:34:11.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/862
