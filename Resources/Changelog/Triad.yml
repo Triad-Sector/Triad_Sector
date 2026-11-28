@@ -6496,3 +6496,12 @@ Entries:
   id: 2757
   time: '2026-11-28T03:36:32.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/861
+- author: Monarda-K
+  changes:
+    - type: Tweak
+      message: AME Jars now last thrice as long.
+    - type: Tweak
+      message: AMEs now generate twice as much power.
+  id: 2758
+  time: '2026-11-28T03:37:06.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/860
