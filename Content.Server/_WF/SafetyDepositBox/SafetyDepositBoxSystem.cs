@@ -52,6 +52,7 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
     [Dependency] private MapLoaderSystem _loader = default!;
     [Dependency] private UseDelaySystem _useDelay = default!;
     [Dependency] private ContrabandPermitSystem _contrabandPermit = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
 
     [Dependency] private EntityQuery<StorageComponent> _storageQuery;
     [Dependency] private EntityQuery<ContainerManagerComponent> _containerManagerQuery;
@@ -382,6 +383,7 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
         StorageComponent storageComp)
     {
         var entityDataList = new List<string>();
+        var saveFailed = false;
 
         Log.Info($"DepositBoxAsync: Box has {storageComp.Container.ContainedEntities.Count} items");
 
@@ -394,13 +396,28 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
                 var locationComp = EnsureComp<ItemStorageLocationComponent>(item);
                 locationComp.ItemLocation = location;
                 using var writer = new StringWriter();
-                _loader.TrySaveEntity(item, writer);
+                if (!_loader.TrySaveEntity(item, writer))
+                {
+                    saveFailed = true;
+                    AlertItemLoss(player, boxComp.BoxId, item, "deposit: TrySaveEntity returned false");
+                    continue;
+                }
                 entityDataList.Add(writer.ToString());
             }
             catch (Exception ex)
             {
+                saveFailed = true;
+                AlertItemLoss(player, boxComp.BoxId, item, $"deposit: serialization threw {ex.GetType().Name}");
                 Log.Error($"Failed to serialize item {ToPrettyString(item)} in safety deposit box: {ex}");
             }
+        }
+
+        // Abort rather than delete the box with items that were never saved.
+        if (saveFailed)
+        {
+            ConsolePopup(player, "Error: some items could not be saved. The box was not deposited. Contact an admin.");
+            PlayDenySound(consoleUid, component);
+            return;
         }
 
         Log.Info($"Saving {entityDataList.Count} items to database for box {boxComp.BoxId}");
@@ -759,7 +776,10 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
                 {
                     using var reader = new StringReader(itemData.EntityData);
                     if (!_loader.TryLoadEntity(reader, "safety deposit box", out var entity))
-                        return;
+                    {
+                        AlertItemLoss(player, boxId, null, "withdraw: TryLoadEntity failed (item data could not be loaded)");
+                        continue;
+                    }
 
                     var itemEntity = entity.Value.Owner;
                     // Mark item as having been stored in a deposit box
@@ -782,11 +802,20 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
                     {
                         var targetCoords = boxEntity.ToCoordinates();
                         _transform.SetCoordinates(itemEntity, targetCoords);
+                        AlertItemLoss(player, boxId, itemEntity, "withdraw: no storage space, item dropped on the floor");
+                    }
+                    // Storage's OnEntInserted force-removes the item when no grid space is free while Insert still
+                    // returns true, so verify the item is really still inside the box.
+                    else if (!_container.TryGetContainingContainer((itemEntity, null, null), out var held)
+                             || held.Owner != boxEntity)
+                    {
+                        AlertItemLoss(player, boxId, itemEntity, "withdraw: item was ejected from the box (no free slot)");
                     }
 
                 }
                 catch (Exception ex)
                 {
+                    AlertItemLoss(player, boxId, null, $"withdraw: exception {ex.GetType().Name}");
                     Log.Error($"Failed to deserialize item from safety deposit box {boxId}: {ex}");
                 }
             }
@@ -812,6 +841,18 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
             $"{ToPrettyString(player):actor} withdrew safety deposit box {boxId} with {box.Items.Count} items");
 
         UpdateUI(consoleUid, component, player);
+    }
+
+    /// <summary>
+    /// Raises an Extreme-impact admin log (shown as an admin alert) when a safety deposit box item is lost,
+    /// dropped or fails to save/load. THIS ERROR SHOULD NOT BE RAISED FOR NORMAL BEHAVIOR, ONLY FOR UNEXPECTED FAILURES. It is expected that some items may be dropped if the box is full or the item cannot be inserted into storage.
+    /// </summary>
+    private void AlertItemLoss(EntityUid player, Guid? boxId, EntityUid? item, string reason)
+    {
+        var itemText = item is { } i && Exists(i) ? ToPrettyString(i) : "unknown item";
+        _adminLogger.Add(LogType.Action, LogImpact.Extreme,
+            $"SAFETY DEPOSIT BOX ITEM LOSS: {ToPrettyString(player):actor}, box {boxId}, {itemText} - {reason}");
+        Log.Error($"Safety deposit box item loss: box {boxId}, {itemText} - {reason}");
     }
 
     private void OnSlotChanged(EntityUid uid, SafetyDepositConsoleComponent component, ContainerModifiedMessage args)
