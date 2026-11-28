@@ -7,14 +7,14 @@
 #
 
 - type: vessel
-  id: Goida
+  id: Davay
   parent: BaseVessel
-  name: PDM Goida
+  name: PDM Davay
   description: A medium sized armored science shuttle. What once was a strong combat vessel has now been refitted for recovering lost technologies.
   price: 55320
   category: Medium
   group: Shipyard
-  shuttlePath: /SharedMaps/_Triad/Shuttles/goida.yml
+  shuttlePath: /SharedMaps/_Triad/Shuttles/davay.yml
   #guidebookPage: null
   class:
   - Science
@@ -22,16 +22,16 @@
   - Uranium
 
 - type: gameMap
-  id: Goida
-  mapName: 'PDM Goida'
-  mapPath: /SharedMaps/_Triad/Shuttles/goida.yml
+  id: Davay
+  mapName: 'PDM Davay'
+  mapPath: /SharedMaps/_Triad/Shuttles/davay.yml
   minPlayers: 0
   stations:
-    Goida:
+    Davay:
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Goida CIV{1}'
+          mapNameTemplate: 'Davay CIV{1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
