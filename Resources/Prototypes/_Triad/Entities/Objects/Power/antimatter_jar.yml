@@ -11,8 +11,8 @@
     sprite: _Triad/Objects/Power/edison_ame_jar.rsi
     state: jar
   - type: AmeFuelContainer
-    fuelAmount: 6400
-    fuelCapacity: 6400
+    fuelAmount: 19200
+    fuelCapacity: 19200
   - type: StaticPrice
     price: 2000
     vendPrice: 20000
