@@ -5,7 +5,7 @@
   name: rammer core
   description: You feel like the fact you're looking at this means this isn't safe.
   suffix: AI
-  parent: [BaseStructure, BaseFactionGearOtherFactionT2Medium] # Triad, adjust contraband ranking
+  parent: [BaseStructure, BaseFactionGearOtherFactionT0] # Triad, adjust contraband ranking
   components:
   - type: Destructible
     thresholds:
@@ -96,7 +96,7 @@
 
 - type: entity
   id: NpcStationAiRammerSmart
-  parent: [NpcStationAiRammer, BaseFactionGearOtherFactionT3]
+  parent: [NpcStationAiRammer, BaseFactionGearOtherFactionT0] # Triad
   suffix: AI, Smart
   components:
   - type: Sprite
@@ -110,7 +110,7 @@
 
 - type: entity
   id: NpcStationAiRammerSmartDodging
-  parent: [NpcStationAiRammer, BaseFactionGearOtherFactionT3]
+  parent: [NpcStationAiRammer, BaseFactionGearOtherFactionT0] # Triad
   suffix: AI, Smart, Dodging
   components:
   - type: Sprite
@@ -166,7 +166,7 @@
 - type: entity
   id: NpcStationAiAttackerSmart
   name: attacker core
-  parent: [NpcStationAiRammer, BaseFactionGearOtherFactionT3]
+  parent: [NpcStationAiRammer, BaseFactionGearOtherFactionT0] # Triad
   description: Shoots at you. Smart.
   suffix: AI, Smart
   components:
@@ -184,7 +184,7 @@
 - type: entity
   id: NpcStationAiAttackerStaticSmart
   name: attacker core
-  parent: [NpcStationAiAttackerSmart, BaseFactionGearOtherFactionT3]
+  parent: [NpcStationAiAttackerSmart, BaseFactionGearOtherFactionT0] # Triad
   description: Shoots at you. Smart.
   suffix: AI, Smart, Static
   components:
@@ -208,7 +208,7 @@
 - type: entity
   id: NpcDroneAiMedusa
   name: attacker core
-  parent: [NpcStationAiAttacker, BaseFactionGearOtherFactionT2]
+  parent: [NpcStationAiAttacker, BaseFactionGearOtherFactionT0] # Triad
   description: Shoots at you.
   suffix: AI, Drone-Medusa
   components:
@@ -233,7 +233,7 @@
 - type: entity
   id: NpcDroneAiMPulsar
   name: attacker core
-  parent: [NpcStationAiAttacker, BaseFactionGearOtherFactionT2]
+  parent: [NpcStationAiAttacker, BaseFactionGearOtherFactionT0] # Triad
   description: Shoots at you, up-close.
   suffix: AI, Drone-MPulsar
   components:
@@ -246,7 +246,7 @@
 - type: entity
   id: NpcDroneAiLance
   name: attacker core
-  parent: [NpcStationAiAttacker, BaseFactionGearOtherFactionT2]
+  parent: [NpcStationAiAttacker, BaseFactionGearOtherFactionT0] # Triad
   description: Shoots at you, close-by.
   suffix: AI, Drone-Lance
   components:
@@ -259,7 +259,7 @@
 - type: entity
   id: NpcDroneAiQuake
   name: attacker core
-  parent: [NpcStationAiAttackerSmart, BaseFactionGearOtherFactionT3]
+  parent: [NpcStationAiAttackerSmart, BaseFactionGearOtherFactionT0] # Triad
   description: Shoots at you.
   suffix: AI, Drone-Quake
   components:

@@ -111,7 +111,7 @@
   components:
   - type: Contraband
     turnInValues:
-      TriadCommerceCredit: 60 # Raised to 60, makes drone hunting profitable for TDF and mercs alike at 1k/TCC rate
+      TriadCommerceCredit: 25
 
 # Ship Saving Contraband
 - type: entity
