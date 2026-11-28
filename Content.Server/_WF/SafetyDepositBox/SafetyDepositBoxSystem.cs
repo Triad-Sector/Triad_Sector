@@ -1,35 +1,37 @@
 using System.IO;
+using Content.Server._NF.Bank;
+using Content.Server._Triad.ContrabandPermit;
 using Content.Server.Administration.Logs;
 using Content.Server.Database;
 using Content.Server.GameTicking;
 using Content.Server.Hands.Systems;
 using Content.Server.Popups;
 using Content.Server.Preferences.Managers;
-using Content.Server._NF.Bank;
 using Content.Shared._NF.Bank.Components;
-using Content.Shared._WF.SafetyDepositBox.BUI;
-using Content.Shared._WF.SafetyDepositBox.Components;
-using Content.Shared._WF.SafetyDepositBox.Events;
-using Content.Shared.Database;
-using Content.Shared.Storage;
-using Content.Shared.Storage.EntitySystems;
-using Content.Shared.Containers.ItemSlots;
-using Content.Shared.Labels.Components;
-using Content.Shared.Labels.EntitySystems;
-using Robust.Server.GameObjects;
-using Robust.Shared.Audio.Systems;
-using Robust.Shared.Containers;
-using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
-using Robust.Shared.EntitySerialization.Systems;
-using Content.Shared.Timing;
-using Content.Shared.Item;
-using Content.Shared.IdentityManagement;
 using Content.Shared._Triad.ContrabandPermit;
 using Content.Shared._Triad.Shipyard.Save.Contraband;
 using Content.Shared._Triad.Storage;
-using Content.Server._Triad.ContrabandPermit;
+using Content.Shared._WF.SafetyDepositBox.BUI;
+using Content.Shared._WF.SafetyDepositBox.Components;
+using Content.Shared._WF.SafetyDepositBox.Events;
+using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Coordinates;
+using Content.Shared.Database;
+using Content.Shared.IdentityManagement;
+using Content.Shared.Item;
+using Content.Shared.Labels.Components;
+using Content.Shared.Labels.EntitySystems;
+using Content.Shared.Storage;
+using Content.Shared.Storage.EntitySystems;
+using Content.Shared.Timing;
+using Robust.Server.GameObjects;
+using Robust.Shared.Audio.Systems;
+using Robust.Shared.Containers;
+using Robust.Shared.EntitySerialization.Systems;
+using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
+using Content.Server.Chat.Managers; // triad admin logging for lost items
+using static Content.Shared.Administration.Notes.AdminMessageEuiState;
 
 namespace Content.Server._WF.SafetyDepositBox;
 
@@ -57,6 +59,7 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
     [Dependency] private EntityQuery<StorageComponent> _storageQuery;
     [Dependency] private EntityQuery<ContainerManagerComponent> _containerManagerQuery;
     [Dependency] private EntityQuery<ContrabandPermitItemComponent> _contrabandPermitItemQuery;
+    [Dependency] private IChatManager _chat = default!; // triad admin logging for lost items
 
     public override void Initialize()
     {
@@ -778,6 +781,7 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
                     if (!_loader.TryLoadEntity(reader, "safety deposit box", out var entity))
                     {
                         AlertItemLoss(player, boxId, null, "withdraw: TryLoadEntity failed (item data could not be loaded)");
+
                         continue;
                     }
 
@@ -842,7 +846,7 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
 
         UpdateUI(consoleUid, component, player);
     }
-
+    // triad start
     /// <summary>
     /// Raises an Extreme-impact admin log (shown as an admin alert) when a safety deposit box item is lost,
     /// dropped or fails to save/load. THIS ERROR SHOULD NOT BE RAISED FOR NORMAL BEHAVIOR, ONLY FOR UNEXPECTED FAILURES. It is expected that some items may be dropped if the box is full or the item cannot be inserted into storage.
@@ -851,10 +855,11 @@ public sealed partial class SafetyDepositBoxSystem : EntitySystem
     {
         var itemText = item is { } i && Exists(i) ? ToPrettyString(i) : "unknown item";
         _adminLogger.Add(LogType.Action, LogImpact.Extreme,
-            $"SAFETY DEPOSIT BOX ITEM LOSS: {ToPrettyString(player):actor}, box {boxId}, {itemText} - {reason}");
+            $"SAFETY DEPOSIT BOX ITEM LOSS Due to system error: {ToPrettyString(player):actor}, box {boxId}, {itemText} - {reason}");
         Log.Error($"Safety deposit box item loss: box {boxId}, {itemText} - {reason}");
+        _chat.SendAdminAlert(player, $"Safety deposit box item fault Detected Expect A potental A-HELP check Alogs: box {boxId}, {itemText} - {reason}");
     }
-
+    // triad end
     private void OnSlotChanged(EntityUid uid, SafetyDepositConsoleComponent component, ContainerModifiedMessage args)
     {
         // Update UI for anyone who has this console's UI open
