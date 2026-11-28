@@ -21,12 +21,13 @@ public sealed partial class TriggerSystem : EntitySystem
 
             var shouldReset =
                 mobState.CurrentState != MobState.Dead &&
-                (rattle.DeathTime != TimeSpan.Zero ||
+                (rattle.DeathTime != null ||
                 rattle.NextTrigger != TimeSpan.Zero);
 
             if (shouldReset)
             {
-                rattle.DeathTime = TimeSpan.Zero;
+                rattle.DeathTime = null;
+                rattle.BackupTriggerThreshold = null;
                 rattle.NextTrigger = TimeSpan.Zero;
                 continue;
             }
