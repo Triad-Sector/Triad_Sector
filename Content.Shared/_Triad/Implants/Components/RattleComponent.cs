@@ -28,7 +28,7 @@ public sealed partial class RattleComponent : Component
     ///     The cached time of death of the person.
     /// </summary>
     [DataField]
-    public TimeSpan DeathTime = TimeSpan.Zero;
+    public TimeSpan? DeathTime = null;
 
     /// <summary>
     ///     The time of next trigger.
@@ -52,7 +52,7 @@ public sealed partial class RattleComponent : Component
     public ProtoId<RadioChannelPrototype> BackupRadioChannel = "Common";
 
     [DataField]
-    public TimeSpan BackupTriggerThreshold = TimeSpan.Zero;
+    public TimeSpan? BackupTriggerThreshold = null;
 
     [DataField]
     public TimeSpan BackupTriggerDelay = TimeSpan.FromMinutes(12);

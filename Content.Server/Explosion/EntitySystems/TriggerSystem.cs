@@ -280,9 +280,9 @@ namespace Content.Server.Explosion.EntitySystems
             // Triad: Add time since death
             var deathTime = string.Empty;
 
-            if (component.DeathTime != TimeSpan.Zero)
+            if (component.DeathTime != null)
             {
-                var minutes = Math.Max(0, (int)(_timing.CurTime - component.DeathTime).TotalMinutes);
+                var minutes = Math.Max(0, (int)(_timing.CurTime - component.DeathTime).Value.TotalMinutes);
                 var suffix = minutes > 1 ? "s" : "";
                 deathTime = $"{minutes} minute{suffix}";
             }
@@ -295,8 +295,9 @@ namespace Content.Server.Explosion.EntitySystems
 
             if (mobstate.CurrentState != MobState.Alive)
             {
+                // Triad - Implant retriggering
                 var radioChannel = _prototypeManager.Index(component.RadioChannel);
-                var backupRadioChannel = _prototypeManager.Index(component.BackupRadioChannel); // Triad, used for backup channel
+                var backupRadioChannel = _prototypeManager.Index(component.BackupRadioChannel);
                 var language = _prototypeManager.Index(component.Language);
                 switch (mobstate.CurrentState)
                 {
@@ -309,18 +310,17 @@ namespace Content.Server.Explosion.EntitySystems
                         }
                     case MobState.Dead:
                         {
-                            var message = component.DeathTime != TimeSpan.Zero ? stillDeathMessage : deathMessage;
+                            var message = component.DeathTime != null ? stillDeathMessage : deathMessage;
 
                             // Channel is medical if below the backup trigger threshold
                             // Otherwise, it sends it to broadband
-                            var selectedChannel = component.BackupTriggerThreshold != TimeSpan.Zero
-                                && _timing.CurTime >= component.BackupTriggerThreshold
+                            var selectedChannel = _timing.CurTime >= component.BackupTriggerThreshold
                                 ? radioChannel : backupRadioChannel;
 
                             _radioSystem.SendRadioMessage(uid, message, selectedChannel, uid, null, language);
                             component.NextTrigger = _timing.CurTime + component.RetriggerDelay;
 
-                            if (component.DeathTime == TimeSpan.Zero)
+                            if (component.DeathTime == null)
                             {
                                 component.DeathTime = _timing.CurTime;
                                 component.BackupTriggerThreshold = _timing.CurTime + component.BackupTriggerDelay;
