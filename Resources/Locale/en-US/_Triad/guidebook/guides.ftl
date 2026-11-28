@@ -1,6 +1,10 @@
 guide-entry-shipyard-gondola = Gondola
 guide-entry-shipyard-behir = Behir
 
+# Triad: drydock
+guide-entry-drydock = Drydock
+guide-entry-impound-lot = Impound Lot
+
 guide-entry-section1 = Out of Character Interactions
 guide-entry-section2 = In Character Interactions
 guide-entry-section3 = Roleplay Standards

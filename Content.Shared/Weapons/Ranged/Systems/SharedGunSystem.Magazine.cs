@@ -14,6 +14,7 @@ public abstract partial class SharedGunSystem
     protected virtual void InitializeMagazine()
     {
         SubscribeLocalEvent<MagazineAmmoProviderComponent, MapInitEvent>(OnMagazineMapInit);
+        SubscribeLocalEvent<MagazineAmmoProviderComponent, ComponentStartup>(OnMagazineStartup); // Triad - see OnMagazineStartup
         SubscribeLocalEvent<MagazineAmmoProviderComponent, TakeAmmoEvent>(OnMagazineTakeAmmo);
         SubscribeLocalEvent<MagazineAmmoProviderComponent, CheckShootPrototypeEvent>(OnMagazineCheckProto); // Mono
         SubscribeLocalEvent<MagazineAmmoProviderComponent, GetAmmoCountEvent>(OnMagazineAmmoCount);
@@ -25,6 +26,12 @@ public abstract partial class SharedGunSystem
     }
 
     private void OnMagazineMapInit(Entity<MagazineAmmoProviderComponent> ent, ref MapInitEvent args)
+    {
+        MagazineSlotChanged(ent);
+    }
+
+    // Triad: seed on load (DrydockAppearanceComponent); container-derived.
+    private void OnMagazineStartup(Entity<MagazineAmmoProviderComponent> ent, ref ComponentStartup args)
     {
         MagazineSlotChanged(ent);
     }

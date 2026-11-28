@@ -59,9 +59,20 @@ public sealed partial class GunSystem : SharedGunSystem
         SubscribeLocalEvent<AutoShootGunComponent, ExaminedEvent>(OnGunExamine); // Frontier
         SubscribeLocalEvent<AutoShootGunComponent, PowerChangedEvent>(OnPowerChange); // Frontier
         SubscribeLocalEvent<AutoShootGunComponent, AnchorStateChangedEvent>(OnAnchorChange); // Frontier
+        SubscribeLocalEvent<GunComponent, ComponentStartup>(OnGunStartup); // Triad
 
         _autoShootGunQuery = GetEntityQuery<AutoShootGunComponent>(); // Mono
         _damageableQuery = GetEntityQuery<DamageableComponent>(); // Mono
+    }
+
+    // Triad: the modified stats (fire rate, projectile speed, spread) are derived, unsaved, and
+    // zero until RefreshModifiers runs. Upstream runs it only on map init, so a gun that comes
+    // back from a saved document already initialized (a drydock retrieve) never fires: AttemptShoot
+    // refuses a zero fire rate before it looks at anything else. Deriving them at startup makes the
+    // component valid from the moment it is live; a normal spawn refreshes again on map init.
+    private void OnGunStartup(EntityUid uid, GunComponent component, ComponentStartup args)
+    {
+        RefreshModifiers((uid, component));
     }
 
     private void OnBallisticPrice(EntityUid uid, BallisticAmmoProviderComponent component, ref PriceCalculationEvent args)

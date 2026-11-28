@@ -1,0 +1,191 @@
+﻿using System.Threading.Tasks;
+using Content.Server._NF.Shipyard.Systems;
+using Content.Server.Administration.Logs;
+using Content.Server.Chat.Managers;
+using Content.Server.Database;
+using Content.Server.GameTicking;
+using Content.Shared._NF.Shipyard.BUI;
+using Content.Shared._Triad.CCVar;
+using Content.Shared._Triad.Drydock;
+using Content.Shared.Database;
+using Robust.Shared.Configuration;
+using Robust.Shared.Player;
+
+namespace Content.Server._Triad.Drydock;
+
+public sealed partial class LobbyDrydockSystem : EntitySystem
+{
+    [Dependency] private IAdminLogManager _adminLogger = default!;
+    [Dependency] private IChatManager _chat = default!;
+    [Dependency] private IConfigurationManager _configManager = default!;
+    [Dependency] private GameTicker _gameTicker = default!;
+    [Dependency] private DrydockStore _drydockStore = default!;
+    [Dependency] private DrydockSystem _drydock = default!;
+
+    private const string DeleteReason = "Deleted by player";
+
+    private ISawmill _sawmill = default!;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        _sawmill = LogManager.GetSawmill("lobby.drydock");
+    }
+
+    [SubscribeNetworkEvent]
+    private async void OnLobbyDrydockBerthInfoRequest(LobbyDrydockBerthInfoRequest ev, EntitySessionEventArgs args)
+    {
+        var session = args.SenderSession;
+        await ProcessBerthInfoRequest(session);
+    }
+
+    [SubscribeNetworkEvent]
+    private async void OnLobbyDrydockDeleteShipMessage(LobbyDrydockDeleteShipMessage ev, EntitySessionEventArgs args)
+    {
+        var (success, shipName) = await TryDeleteStoredShip(args.SenderSession, ev.ShipId, ev.ConfirmText);
+
+        if (!success)
+            _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Medium, $"{args.SenderSession} could not delete their ship {shipName} (ID: {ev.ShipId}) from the lobby interface");
+        else
+            _adminLogger.Add(LogType.ShipYardUsage, LogImpact.High, $"{args.SenderSession} deleted their ship {shipName} (ID: {ev.ShipId}) permanently by using the lobby interface");
+    }
+
+    [SubscribeNetworkEvent]
+    private async void OnLobbyDrydockExportShipMessage(LobbyDrydockExportShipMessage ev, EntitySessionEventArgs args)
+    {
+        var player = args.SenderSession;
+        var shipId = ev.ShipId;
+
+        var owner = player.UserId.UserId;
+
+        var header = await _drydockStore.GetShipHeader(shipId);
+        if (header == null || header.OwnerUserId != owner || (header.State != DrydockShipState.Stored && header.State != DrydockShipState.Impounded))
+        {
+            _sawmill.Warning($"{player} attempted to export ship {shipId}, which is not a stored or impounded ship of theirs.");
+            RaiseNetworkEvent(new LobbyDrydockExportShipResponse(null), player.Channel);
+            return;
+        }
+
+        var yamlData = await _drydock.GetShipYamlData(shipId, owner);
+
+        if (yamlData == null)
+        {
+            _sawmill.Warning($"{player} attempted to export their ship {shipId} to file. Operation failed.");
+            RaiseNetworkEvent(new LobbyDrydockExportShipResponse(null), player.Channel);
+            return;
+        }
+
+        var response = new LobbyDrydockExportShipResponse(yamlData);
+        RaiseNetworkEvent(response, player.Channel);
+
+        _sawmill.Info($"{player} exported their ship {shipId} to file.");
+    }
+
+    [SubscribeNetworkEvent]
+    private async void OnLobbyDrydockTransferShipOwnerMessage(LobbyDrydockTransferShipOwnerMessage ev, EntitySessionEventArgs args)
+    {
+        var player = args.SenderSession;
+        var shipId = ev.ShipId;
+
+        var header = await _drydockStore.GetShipHeader(shipId);
+        var owner = player.UserId.UserId;
+
+        if (header != null && header.OwnerUserId != owner)
+            return;
+
+        if (header == null)
+            return;
+
+        if (header.State != DrydockShipState.Stored && header.State != DrydockShipState.Impounded)
+            return;
+
+        var result = await _drydockStore.TryChangeLocalShipOwner(shipId, owner, ev.Character, _gameTicker.RoundIdOrNull);
+
+        if (result == DrydockBerthResult.Success)
+            await ProcessBerthInfoRequest(player); // Re-send berth info data to the player
+    }
+
+    internal async Task<(bool success, string shipName)> TryDeleteStoredShip(ICommonSession player, Guid shipId, string typedName)
+    {
+        var header = await _drydockStore.GetShipHeader(shipId);
+        var owner = player.UserId.UserId;
+
+        var shipName = header != null ? header.ShipName : "Unknown";
+
+        if (header != null && header.OwnerUserId != owner)
+        {
+            _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Extreme, $"{player} ATTEMPTED TO DELETE SHIP {shipId} THAT THEY DID NOT OWN!");
+            _chat.SendAdminAlert($"{player} ATTEMPTED TO DELETE SHIP {shipName} (ID: {shipId}) THAT THEY DID NOT OWN!");
+            return (false, shipName);
+        }
+
+        if (header == null)
+            return (false, shipName);
+
+        if (header.State != DrydockShipState.Stored)
+            return (false, shipName);
+
+        if (!ShipyardSystem.TypedNameMatches(typedName, shipName))
+            return (false, shipName);
+
+        var result = await _drydockStore.TryDeleteShip(shipId, owner, _gameTicker.RoundIdOrNull, DeleteReason);
+
+        if (result == DrydockBerthResult.Success)
+        {
+            await ProcessBerthInfoRequest(player); // Re-send berth info data to the player
+            return (true, shipName);
+        }
+        else
+        {
+            return (false, shipName);
+        }
+    }
+
+    private async Task<bool> ProcessBerthInfoRequest(ICommonSession requester)
+    {
+        var owner = requester.UserId.UserId;
+
+        var slotsTask = _drydockStore.GetBerths(owner);
+        var appraisalsTask = _drydockStore.GetCurrentAppraisals(owner);
+        await Task.WhenAll(slotsTask, appraisalsTask);
+        var slots = await slotsTask;
+        var appraisals = await appraisalsTask;
+
+        var berthInfos = new List<DrydockBerthInfo>();
+
+        var refund = _configManager.GetCVar(TriadCCVars.DrydockBerthRefund);
+        foreach (var slot in slots)
+        {
+            if (slot.Occupant is not { } occupant)
+                continue;
+
+            // Only impounded and stored ships are shown
+            if (occupant.State != DrydockShipState.Stored && occupant.State != DrydockShipState.Impounded)
+                continue;
+
+            appraisals.TryGetValue(occupant.ShipGuid, out var appraisal);
+
+            berthInfos.Add(new DrydockBerthInfo(
+                slot.Berth.BerthId,
+                slot.Berth.MaxSizeClass,
+                (int)(slot.Berth.PricePaid * refund),
+                null,
+                null,
+                occupant.ShipGuid,
+                occupant.ShipName,
+                occupant.SizeClass,
+                occupant.State.ToString(),
+                null,
+                null,
+                null,
+                null,
+                appraisal,
+                occupant.CharacterIndex));
+        }
+
+        var response = new LobbyDrydockBerthInfoResponse(berthInfos);
+        RaiseNetworkEvent(response, requester.Channel);
+        return berthInfos.Count > 0;
+    }
+}

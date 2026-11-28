@@ -16,4 +16,12 @@ public sealed partial class PaintableComponent : Component
     /// </summary>
     [DataField(required: true)]
     public ProtoId<PaintableGroupPrototype>? Group;
+
+    /// <summary>
+    /// Triad: the style this was last painted to, if any. Painting only wrote appearance data, which
+    /// is never saved, so every painted door on a saved ship came back in its factory colours. The
+    /// style is re-applied on startup from here.
+    /// </summary>
+    [DataField]
+    public string? Style;
 }

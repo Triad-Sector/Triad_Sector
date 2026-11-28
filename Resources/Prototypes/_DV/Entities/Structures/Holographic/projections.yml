@@ -3,6 +3,12 @@
   abstract: true
   parent: BaseHolosignUntimed
   id: BaseHolosign
+  # Triad: a projection with a despawn timer has no business surviving a ship save. The serializer
+  # skips save: false outright, so this keeps the whole timed holosign family out of both the
+  # drydock document and the legacy ship file, and the drydock's audit gate already mirrors the
+  # same rule so a store is not refused for them. BaseHolosignUntimed deliberately does not carry
+  # this: an untimed holosign is permanent and should keep saving.
+  save: false
   placement:
     mode: SnapgridCenter
   components:

@@ -55,6 +55,15 @@ namespace Content.Server.Database
         public DbSet<TriadShipyardSigningKey> TriadShipyardSigningKeys { get; set; } = default!;
         public DbSet<TriadShipyardAuditEvent> TriadShipyardAuditEvents { get; set; } = default!;
         public DbSet<TriadShipyardMigrationPermit> TriadShipyardMigrationPermits { get; set; } = default!;
+        public DbSet<TriadShipyardConsumedShip> TriadShipyardConsumedShips { get; set; } = default!;
+        // End Triad
+        // Triad: drydock (see Model.Drydock.cs)
+        public DbSet<DrydockShip> DrydockShip { get; set; } = default!;
+        public DbSet<DrydockRevision> DrydockRevision { get; set; } = default!;
+        public DbSet<DrydockBlob> DrydockBlob { get; set; } = default!;
+        public DbSet<DrydockAudit> DrydockAudit { get; set; } = default!;
+        public DbSet<DrydockBerth> DrydockBerth { get; set; } = default!;
+        public DbSet<DrydockTransfer> DrydockTransfer { get; set; } = default!;
         // End Triad
         // Triad: market data. Shapes and reasoning live in Model.Market.cs.
         public DbSet<MarketTransaction> MarketTransaction { get; set; } = default!;
@@ -369,6 +378,20 @@ namespace Content.Server.Database
             modelBuilder.Entity<TriadShipyardMigrationPermit>()
                 .HasIndex(p => p.PlayerUserId)
                 .IsUnique();
+
+            // Unique on the hash: the constraint, not the read-then-write, is what makes two
+            // simultaneous imports of one file resolve to a single ship. The insert races and one
+            // of them loses.
+            modelBuilder.Entity<TriadShipyardConsumedShip>()
+                .HasIndex(c => c.ShipHash)
+                .IsUnique();
+
+            // The import budget counts this player's spent imports.
+            modelBuilder.Entity<TriadShipyardConsumedShip>()
+                .HasIndex(c => c.PlayerUserId);
+            // End Triad
+            // Triad: drydock
+            ModelDrydock.OnModelCreating(modelBuilder);
             // End Triad
             // Triad: market data
             ModelMarket.OnModelCreating(modelBuilder);
@@ -1234,18 +1257,19 @@ namespace Content.Server.Database
     }
 
     // Triad: tamper protection
+    /// <summary>
+    /// A key the server once signed ship saves with. Read-only since ship saving was removed: legacy
+    /// import reads <see cref="PublicKey"/> to recognise our own saves, and nothing writes new rows.
+    /// </summary>
     public class TriadShipyardSigningKey
     {
         public int Id { get; set; }
         public byte[] PublicKey { get; set; } = default!;
 
         /// <summary>
-        /// F14 fix: the private key lives on disk as a PEM file, not in the database. This stable
-        /// identifier is the filename stem under <c>triad.tamper_signing_keys_dir</c>. DB compromise
-        /// alone now yields no usable signing material - the attacker would also need filesystem
-        /// access to read the keys directory. Nullable so rows that pre-date this change can be
-        /// retired without being usable; the keystore treats null KeyId as "not loadable" and
-        /// either retires the row and generates fresh, or refuses to start.
+        /// Filename stem of the PEM file the private key was kept in, from when the server still
+        /// signed. Historical only: nothing reads the private key any more. Null on rows that
+        /// pre-date on-disk keys.
         /// </summary>
         public string? KeyId { get; set; }
 
@@ -1256,9 +1280,9 @@ namespace Content.Server.Database
 
     /// <summary>
     /// A per-player legacy-onboarding permit. While the server is in enforce mode, a player with an
-    /// active permit may load non-our-key (unsigned or foreign-signed) ships, which the load path
-    /// re-signs with the server key. It is the rollout exception for stragglers who did not get a
-    /// ship signed during the notify window; it clears on admin revoke or session end.
+    /// active permit may import non-our-key (unsigned or foreign-signed) legacy saves into the
+    /// drydock; they are never re-signed. It is the rollout exception for stragglers who did not get
+    /// a ship signed during the notify window; it clears on admin revoke or session end.
     /// </summary>
     public class TriadShipyardMigrationPermit
     {
@@ -1267,6 +1291,42 @@ namespace Content.Server.Database
         public Guid GrantedByAdminId { get; set; }
         public DateTime GrantedAt { get; set; }
         public string? Notes { get; set; }
+    }
+
+    /// <summary>
+    /// A legacy save file that has been imported into the drydock and must never be honoured again.
+    /// Keyed by the hash the signature covers, which is what makes it forgery-proof: editing the
+    /// file to change its hash invalidates the signature, so a player cannot mint a fresh identity
+    /// for a save they have already spent.
+    ///
+    /// <para>Only an enforcing server writes here. A server running the tamper check off or in
+    /// notify is a rehearsal: the import runs end to end and this table is neither read nor written,
+    /// so a test box cannot eat a save that still has to work somewhere else.</para>
+    /// </summary>
+    public class TriadShipyardConsumedShip
+    {
+        public int Id { get; set; }
+
+        /// <summary>SHA-256 of the signed ship data, as <c>AuthenticatedShipFile.GetHash</c> computes it.</summary>
+        public byte[] ShipHash { get; set; } = default!;
+
+        /// <summary>Who spent it. The import budget is counted over this column.</summary>
+        public Guid PlayerUserId { get; set; }
+
+        public DateTime ImportedAt { get; set; }
+
+        public int? ImportedRoundId { get; set; }
+
+        public Round? ImportedRound { get; set; }
+
+        /// <summary>
+        /// The drydock ship this became. Loose by intention, like the audit log's key reference: the
+        /// ship can later be sold or deleted and the hash must stay spent regardless.
+        /// </summary>
+        public Guid? ShipGuid { get; set; }
+
+        /// <summary>The name it carried at import, for the admin feed. Display only.</summary>
+        public string? ShipName { get; set; }
     }
 
     public enum TriadShipyardEventType

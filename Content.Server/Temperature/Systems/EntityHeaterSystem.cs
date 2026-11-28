@@ -29,6 +29,7 @@ public sealed partial class EntityHeaterSystem : EntitySystem
         SubscribeLocalEvent<EntityHeaterComponent, ExaminedEvent>(OnExamined);
         SubscribeLocalEvent<EntityHeaterComponent, GetVerbsEvent<AlternativeVerb>>(OnGetVerbs);
         SubscribeLocalEvent<EntityHeaterComponent, PowerChangedEvent>(OnPowerChanged);
+        SubscribeLocalEvent<EntityHeaterComponent, ComponentStartup>(OnStartup); // Triad - see OnStartup
     }
 
     public override void Update(float deltaTime)
@@ -77,6 +78,14 @@ public sealed partial class EntityHeaterSystem : EntitySystem
                 _popup.PopupEntity(Loc.GetString("entity-heater-switched-setting", ("setting", nextSetting)), uid, args.User);
             }
         });
+    }
+
+    // Triad: seed on load (DrydockAppearanceComponent).
+    private void OnStartup(EntityUid uid, EntityHeaterComponent comp, ComponentStartup args)
+    {
+        var powered = TryComp<ApcPowerReceiverComponent>(uid, out var receiver) && receiver.Powered;
+        var setting = powered ? comp.Setting : EntityHeaterSetting.Off;
+        _appearance.SetData(uid, EntityHeaterVisuals.Setting, setting);
     }
 
     private void OnPowerChanged(EntityUid uid, EntityHeaterComponent comp, ref PowerChangedEvent args)

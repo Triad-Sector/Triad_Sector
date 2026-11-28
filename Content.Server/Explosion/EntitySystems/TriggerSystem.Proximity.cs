@@ -128,10 +128,15 @@ public sealed partial class TriggerSystem
         var query = EntityQueryEnumerator<TriggerOnProximityComponent>();
         while (query.MoveNext(out var uid, out var trigger))
         {
-            if (curTime >= trigger.NextVisualUpdate)
+            // Triad: null rather than TimeSpan.MaxValue for "nothing scheduled". See
+            // TriggerOnProximityComponent.NextVisualUpdate; MaxValue overflowed the generated
+            // unpause handler.
+            // if (curTime >= trigger.NextVisualUpdate)
+            if (trigger.NextVisualUpdate is { } nextVisualUpdate && curTime >= nextVisualUpdate)
             {
                 // Update the visual state once the animation is done.
-                trigger.NextVisualUpdate = TimeSpan.MaxValue;
+                // trigger.NextVisualUpdate = TimeSpan.MaxValue;
+                trigger.NextVisualUpdate = null;
                 SetProximityAppearance(uid, trigger);
             }
 

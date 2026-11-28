@@ -1,0 +1,51 @@
+# What a drydock retrieve deletes from a ship. Mechs are being reworked, so a hull carries none of
+# them across a store: not the mechs, their equipment, their parts and frames, their boards, or the
+# tech disks that unlock them. Not contraband: nothing is seized or permitted, it simply stays with
+# the round, the same way research points and unlocked tech do.
+
+- type: drydockStrip
+  id: Mechs
+  components:
+  - Mech
+  - MechEquipment
+  parents:
+  - BaseMechPart        # every mech's parts, harness and chassis (the frames)
+  - BaseExosuitParts    # armor plates, upgrade kits, air tanks, thrusters, IFF modules
+  prototypes:
+  # Boards: their parent is shared with every other circuit board.
+  - RipleyCentralElectronics
+  - RipleyPeripheralsElectronics
+  - HonkerCentralElectronics
+  - HonkerPeripheralsElectronics
+  - HonkerTargetingElectronics
+  - HamtrCentralElectronics
+  - HamtrPeripheralsElectronics
+  - ClarkeCentralElectronics
+  - ClarkePeripheralsElectronics
+  - GygaxCentralElectronics
+  - GygaxPeripheralsElectronics
+  - GygaxTargetingElectronics
+  - DurandCentralElectronics
+  - DurandPeripheralsElectronics
+  - DurandTargetingElectronics
+  - BroadswordCentralElectronics
+  - BroadswordPeripheralsElectronics
+  - BroadswordTargetingElectronics
+  - FlailCentralElectronics
+  - FlailPeripheralsElectronics
+  - FlailTargetingElectronics
+  # Tech disks: their parent is shared with every other tech disk.
+  - TechDiskMechCiv
+  - TechDiskMechHeavyIndustrial
+  - TechDiskMechGygax
+  - TechDiskMechMissiles
+  - TechDiskMechBallistics
+  - TechDiskMechEWAR
+  - TechDiskMechS4Base
+  - TechDiskMechS4Spec
+  - TechDiskMechS2Base
+  - TechDiskMechS2Spec
+  - TechDiskMechIFF
+  - TechDiskMechWeaponsLight
+  - TechDiskMechWeaponsMedium
+  - TechDiskMechWeaponsHeavy

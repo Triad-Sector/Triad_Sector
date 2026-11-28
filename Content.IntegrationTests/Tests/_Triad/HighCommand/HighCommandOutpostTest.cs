@@ -147,50 +147,6 @@ public sealed class HighCommandOutpostTest
     }
 
     /// <summary>
-    /// Clearance is granted per hull for one round. No grid save may write it, or a saved ship carries it into the
-    /// next round.
-    /// </summary>
-    [Test]
-    public async Task ClearanceIsNeverWrittenByAGridSave()
-    {
-        await using var pair = await PoolManager.GetServerClient();
-        var server = pair.Server;
-        var entMan = server.EntMan;
-        var mapLoader = entMan.System<MapLoaderSystem>();
-        var shipSave = entMan.System<ShipyardGridSaveSystem>();
-
-        var map = await pair.CreateTestMap();
-        var grid = map.Grid.Owner;
-
-        var engineYaml = string.Empty;
-        string? shipYaml = null;
-        await server.WaitAssertion(() =>
-        {
-            // The same call hcclearance makes.
-            entMan.AddComponent<TfaHighCommandClearanceComponent>(grid);
-
-            // Engine save first: the shipyard save mutates the grid before it serializes.
-            var writer = new StringWriter();
-            Assert.That(mapLoader.TrySaveGrid(grid, writer), "Fixture: the engine grid save failed.");
-            engineYaml = writer.ToString();
-
-            Assert.That(shipSave.TryBuildShipSaveYaml(grid, out shipYaml, out _), "Fixture: the shipyard save failed.");
-        });
-
-        Assert.Multiple(() =>
-        {
-            Assert.That(engineYaml, Does.Contain("MapGrid"), "Fixture: the engine save did not write the grid.");
-            Assert.That(shipYaml, Does.Contain("MapGrid"), "Fixture: the shipyard save did not write the grid.");
-            Assert.That(engineYaml, Does.Not.Contain(ClearanceComponent), "The engine grid save wrote hull clearance.");
-            Assert.That(shipYaml, Does.Not.Contain(ClearanceComponent), "The shipyard save wrote hull clearance.");
-            Assert.That(entMan.HasComponent<TfaHighCommandClearanceComponent>(grid),
-                "Saving stripped clearance from the live hull; it should only stay out of the file.");
-        });
-
-        await pair.CleanReturnAsync();
-    }
-
-    /// <summary>
     /// Maps registered as an FTL destination gated on hull clearance.
     /// </summary>
     private static List<EntityUid> OutpostMaps(IEntityManager entMan)

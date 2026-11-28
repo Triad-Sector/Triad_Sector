@@ -6,7 +6,8 @@
 
     <BoxContainer Orientation="Vertical">
 
-        <PanelContainer>
+        <!-- Triad: hidden, the console is a records view only and no longer takes a card -->
+        <PanelContainer Visible="False">
             <PanelContainer.PanelOverride>
                 <graphics:StyleBoxFlat BackgroundColor="#1B1E1B" />
             </PanelContainer.PanelOverride>

@@ -24,6 +24,7 @@ using Content.Shared.DeviceNetwork.Components;
 using Timer = Robust.Shared.Timing.Timer;
 using Content.Server._NF.SectorServices; // Frontier
 using Content.Shared.GameTicking.Components; // Mono
+using Content.Shared._Triad.CCVar; // Triad
 
 namespace Content.Server.RoundEnd
 {
@@ -50,6 +51,7 @@ namespace Content.Server.RoundEnd
 
         /// <summary>
         /// Countdown to use where there is no station alert countdown to be found.
+        /// Triad - set from triad.round_end.countdown_minutes
         /// </summary>
         public TimeSpan DefaultCountdownDuration { get; set; } = TimeSpan.FromMinutes(10);
 
@@ -67,6 +69,7 @@ namespace Content.Server.RoundEnd
         {
             base.Initialize();
             SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Reset());
+            Subs.CVar(_cfg, TriadCCVars.RoundEndCountdownMinutes, minutes => DefaultCountdownDuration = TimeSpan.FromMinutes(Math.Max(1, minutes)), true); // Triad
             SetAutoCallTime();
         }
 

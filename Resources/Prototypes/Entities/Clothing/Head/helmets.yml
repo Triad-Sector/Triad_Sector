@@ -138,7 +138,6 @@
     - Snout
     - HeadTop
     - HeadSide
-  - type: HLPersistOnShipSave #Triad
 
 #Janitorial Bombsuit Helmet
 - type: entity

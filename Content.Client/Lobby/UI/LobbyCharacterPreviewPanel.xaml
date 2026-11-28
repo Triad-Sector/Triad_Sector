@@ -18,9 +18,18 @@
 
             </BoxContainer>
             <controls:VSpacer/>
-            <Button Name="CharacterSetup" Text="{Loc 'lobby-character-preview-panel-character-setup-button'}"
-                    HorizontalAlignment="Center"
-                    Margin="0 5 0 0"/>
+            <!-- Triad Start -->
+            <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Name="CharacterSetup"
+                        Text="{Loc 'lobby-character-preview-panel-character-setup-button'}"
+                        HorizontalAlignment="Center"
+                        Margin="0 5 0 0"/>
+                <Button Name="SavedShips"
+                        Text="{Loc 'lobby-character-preview-panel-saved-ships-button'}"
+                        HorizontalAlignment="Center"
+                        Margin="0 5 0 0"/>
+            </BoxContainer>
+            <!-- Triad End -->
             <!-- MonoCoins Display -->
             <Label Name="MonoCoins" HorizontalAlignment="Center" Margin="3 3" Visible="False"/>
         </BoxContainer>

@@ -14,6 +14,8 @@ public sealed partial class LobbyCharacterPreviewPanel : Control
 
     public Button CharacterSetupButton => CharacterSetup;
 
+    public Button SavedShipsButton => SavedShips;
+
     private EntityUid? _previewDummy;
 
     public LobbyCharacterPreviewPanel()

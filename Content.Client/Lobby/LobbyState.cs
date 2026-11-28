@@ -1,4 +1,5 @@
 using Content.Client._NF.LateJoin;
+using Content.Client._Triad.Drydock.UI;
 using Content.Client.Audio;
 using Content.Client.Eui;
 using Content.Client.GameTicking.Managers;
@@ -70,6 +71,7 @@ namespace Content.Client.Lobby
             UpdateLobbyUi();
 
             Lobby.CharacterPreview.CharacterSetupButton.OnPressed += OnSetupPressed;
+            Lobby.CharacterPreview.SavedShipsButton.OnPressed += OnSavedShipsPressed; // Triad
             Lobby.ReadyButton.OnPressed += OnReadyPressed;
             Lobby.ReadyButton.OnToggled += OnReadyToggled;
 
@@ -90,6 +92,7 @@ namespace Content.Client.Lobby
             _voteManager.ClearPopupContainer();
 
             Lobby!.CharacterPreview.CharacterSetupButton.OnPressed -= OnSetupPressed;
+            Lobby!.CharacterPreview.SavedShipsButton.OnPressed -= OnSavedShipsPressed; // Triad
             Lobby!.ReadyButton.OnPressed -= OnReadyPressed;
             Lobby!.ReadyButton.OnToggled -= OnReadyToggled;
 
@@ -107,6 +110,13 @@ namespace Content.Client.Lobby
             SetReady(false);
             Lobby?.SwitchState(LobbyGui.LobbyGuiState.CharacterSetup);
         }
+
+        // Triad Start
+        private void OnSavedShipsPressed(BaseButton.ButtonEventArgs args)
+        {
+            _userInterfaceManager.GetUIController<LobbySavedShipsUIController>().ToggleWindow();
+        }
+        // Triad End
 
         private void OnReadyPressed(BaseButton.ButtonEventArgs args)
         {

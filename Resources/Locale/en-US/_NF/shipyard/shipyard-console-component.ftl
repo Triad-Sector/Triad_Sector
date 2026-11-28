@@ -18,7 +18,9 @@ shipyard-console-sale-not-docked = Ship must be docked.
 shipyard-console-sale-organic-aboard = All crew must disembark. {$name} is still aboard.
 # This error message is bad, but if it happens, something awful's happened.
 shipyard-console-sale-invalid-ship = Ship is invalid and cannot be sold.
-shipyard-console-sale-unknown-reason = Ship cannot be sold: {reason}
+# shipyard-console-sale-unknown-reason = Ship cannot be sold: {reason}
+# Triad: the variable was missing its $, so the reason never printed.
+shipyard-console-sale-unknown-reason = Ship cannot be sold: {$reason}
 shipyard-console-deed-label = Registered Ship:
 shipyard-console-appraisal-label = Shuttle Resale Value:{" "}
 shipyard-console-no-voucher-redemptions = All voucher redemptions have been used.
@@ -37,10 +39,17 @@ shipyard-console-menu-engine-label = Engine:{" "}
 
 shipyard-console-purchase-available = Purchase
 shipyard-console-guidebook = Manual
-shipyard-console-unassign-deed = Unassign
-shipyard-console-deed-unassigned = Deed unassigned from ID card successfully.
+# Triad: removed with the Unassign button. confirm-unassign stays: Sell and the vessel rows still read it.
+# shipyard-console-unassign-deed = Unassign
+# shipyard-console-deed-unassigned = Deed unassigned from ID card successfully.
 shipyard-console-confirm-unassign = Are you sure?
-shipyard-console-unassign-cooldown = Wait {$minutes} minute(s) before unassigning another deed.
+# Triad: the footer sale button for a hull issued on a voucher (its Sell label is shipyard-console-sell-button, further down)
+shipyard-console-return-button = Return Vessel
+shipyard-console-return-confirm = Burn voucher?
+shipyard-console-return-tooltip = Hands the vessel back for nothing. The voucher is used up.
+# Triad: a ghost or admin ghost pressing a shipyard console
+shipyard-console-ghost-refused = Ghosts can't use shipyard consoles. Admins act on ships through drydockadmin.
+# shipyard-console-unassign-cooldown = Wait {$minutes} minute(s) before unassigning another deed.
 
 # Keep these in enum order for ease of validation.
 shipyard-console-category-All = All
@@ -93,12 +102,6 @@ shipyard-console-engine-Plasma = Plasma
 shipyard-console-engine-Uranium = Uranium
 shipyard-console-engine-Bananium = Bananium
 
-## Error Messages
-shipyard-console-load-ship-no-id = Insert an ID card to load saved ships.
-shipyard-console-load-failed = Failed to load ship.
-shipyard-console-insufficient-funds = Insufficient funds to load ship. Cost: {$cost} credits. Your balance: {$balance} credits.
-shipyard-console-load-success-charged = Ship "{$ship}" loaded successfully. {$cost} credits charged to your account.
-shipyard-console-load-success-debt = Ship "{$ship}" loaded successfully. {$cost} credits charged. WARNING: You are now {$debt} credits in debt!
 # Mono start
 shipyard-console-engine-NFR = NFR
 # Mono end

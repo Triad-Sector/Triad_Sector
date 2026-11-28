@@ -1,0 +1,74 @@
+<!-- Triad: new -->
+<Document>
+	# Drydock
+
+	<Box Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+		<ColorBox OutlineColor="#a4885c" OutlineThickness="3" Margin="12" VerticalAlignment="Center">
+			<Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+				<GuideEntityEmbed Entity="ComputerShipyard" Caption=""/>
+			</Box>
+		</ColorBox>
+
+		<Box Orientation="Vertical" HorizontalAlignment="Left">
+			[mono][color=#897236]BERTHS     [/color]  2,500 to 80,000 by hull class[/mono]
+
+			[mono][color=#897236]SELL-BACK  [/color]  half an empty berth's price[/mono]
+
+			[mono][color=#897236]OFFERS     [/color]  30 minutes to accept or decline[/mono]
+
+			[mono][color=#897236]ROUND END  [/color]  50% of appraisal to reclaim[/mono]
+		</Box>
+	</Box>
+
+	The Drydock tab on the shipyard console is where your ships wait between shifts. A stored ship sits in a [color=#a4885c][bold]berth[/bold][/color], and retrieving it empties that berth until the ship comes back.
+
+	[color=#897236][mono]──── [color=#ffdd33][bold]BERTHS[/bold][/color] ──────────────────────────────────────────[/mono][/color]
+
+	Every ship you buy includes a berth of its hull class, created with the purchase. A berth's class comes from the hull's size:
+
+	[mono]Cutter        up to 96 tiles      2,500\nCorvette      up to 192 tiles     5,000\nFrigate       up to 384 tiles    10,000\nCruiser       up to 768 tiles    20,000\nCapital       up to 1,536 tiles  40,000\nSupercapital  above 1,536 tiles  80,000[/mono]
+
+	- Selling an empty berth refunds half its price.
+	- A hull that outgrows its berth can be upgraded on the spot from the tab, paying the difference between classes.
+	- You may have one civilian ship underway at a time. Buying another ship, or retrieving one, refuses while it is out.
+
+	[color=#897236][mono]──── [color=lime][bold]STORING[/bold][/color] ─────────────────────────────────────────[/mono][/color]
+
+	- Dock at the station the console you are using is on. A ship is stored from its berth, not from open space.
+	- Everyone disembarks first, and the ship must carry no armed nuke, no running countdown and no singularity.
+	- Pick a berth from [color=lime]Store in #N[/color]. It names the berth the console would choose and lists every free berth, the ones too small greyed with the reason.
+
+	[color=#897236][mono]──── [color=#00ccff][bold]RETRIEVING[/bold][/color] ──────────────────────────────────────[/mono][/color]
+
+	- The ship arrives already docked at the station.
+	- A fresh deed lands on the card in the console.
+	- A pending rename, if you queued one, is applied to the hull and the deed together.
+
+	[color=#897236][mono]──── [color=#ffa500][bold]WHAT STAYS BEHIND[/bold][/color] ───────────────────────────────[/mono][/color]
+
+	- Research resets on retrieve.
+	- Contraband found aboard is seized.
+	- Permits come back only for the character who does the retrieving.
+
+	[color=#897236][mono]──── [color=#1e90ff][bold]THE SHIP MENU[/bold][/color] ───────────────────────────────────[/mono][/color]
+
+	Each berthed ship has a menu of its own.
+
+	- [color=#a4885c][bold]Rename…[/bold][/color] takes effect on the ship's next retrieve.
+	- [color=#a4885c][bold]Move…[/bold][/color] shifts it to another of your berths.
+	- [color=#a4885c][bold]Transfer…[/bold][/color] offers the ship to an online captain with a berth that fits. It waits in escrow for up to 30 minutes while they accept or decline, and they are warned if accepting takes their last free berth.
+	- [color=#a4885c][bold]Sell…[/bold][/color] pays a share of the ship's appraisal and frees the berth. Type the ship's name to confirm; it cannot be undone.
+
+	[color=#897236][mono]──── [color=#cc3333][bold]ROUND END[/bold][/color] ───────────────────────────────────────[/mono][/color]
+
+	An incoming [color=yellow]coronal mass ejection[/color] is announced 30 minutes before the round ends, with further warnings at 15 and 5 minutes. If your ship is still out at any of those marks, you get your own warning alongside the sector-wide one.
+
+	A ship still out when the round ends is impounded rather than lost. What that costs and how to get it back is on the [textlink="Impound Lot" link="ImpoundLot"] page.
+
+	[color=#897236][mono]──── [color=#aa88cc][bold]SIDENOTES[/bold][/color] ───────────────────────────────────────[/mono][/color]
+
+	- TDF, TFA and voucher crews see ACCESS DENIED on the tab. Someone else's card shows BIOMETRIC MISMATCH instead.
+	- The Drydock Registry on the shuttle records console lists every ship by character, ship name or callsign, along with whether it is stored, underway, impounded or deregistered.
+	- Losing a card never loses a ship. Ownership lives on the ship's own record, not on the card; a lost card only costs you the deed sitting on it.
+
+</Document>

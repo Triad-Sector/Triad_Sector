@@ -1,8 +1,0 @@
-- type: shipSaveLimits
-  id: ShipSaveLimits
-  limits:
-    CivilianStash: 2
-    MilitaryStash: 1
-    MedicalStash: 2
-    HydroponicsStash: 1
-    FuelStash: 1

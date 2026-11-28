@@ -31,7 +31,6 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: Climbable
-  - type: HLPersistOnShipSave # Triad : box save on ship
   - type: Sprite
     noRot: true
     sprite: /Textures/_NF/Structures/Storage/magnetbox.rsi

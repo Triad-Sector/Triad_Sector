@@ -89,6 +89,16 @@ public abstract partial class SharedSmartFridgeSystem : EntitySystem
     // persisted and is deliberately NOT cleared here: it is the fridge's menu and outlives its stock.
     private void OnMapInit(Entity<SmartFridgeComponent> ent, ref MapInitEvent args)
     {
+        RebuildEntries(ent);
+    }
+
+    /// <summary>
+    /// Rebuilds the stock index from the container. Map init calls it; so does a drydock retrieve,
+    /// which restores a loaded ship without ever re-firing map init, and would otherwise hand back a
+    /// stocked fridge that reports itself empty.
+    /// </summary>
+    public void RebuildEntries(Entity<SmartFridgeComponent> ent)
+    {
         if (!_container.TryGetContainer(ent, ent.Comp.Container, out var container))
             return;
 

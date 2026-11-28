@@ -16,6 +16,7 @@ using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom; // Triad - for TimeOffsetSerializer
 
 namespace Content.Shared._EE.Supermatter.Components;
 
@@ -267,14 +268,14 @@ public sealed partial class SupermatterComponent : Component
     /// <summary>
     /// Last time the supermatter's damage was announced
     /// </summary>
-    [DataField]
-    public TimeSpan YellLast;
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
+    public TimeSpan YellLast; // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
 
     /// <summary>
     /// Time when the delamination will occur
     /// </summary>
-    [DataField]
-    public TimeSpan DelamEndTime;
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
+    public TimeSpan DelamEndTime; // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
 
     /// <summary>
     /// How long it takes in seconds for the supermatter to delaminate after reaching zero integrity
@@ -285,8 +286,8 @@ public sealed partial class SupermatterComponent : Component
     /// <summary>
     /// Last time a supermatter accent sound was triggered
     /// </summary>
-    [DataField]
-    public TimeSpan AccentLastTime;
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
+    public TimeSpan AccentLastTime; // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
 
     /// <summary>
     /// Minimum time in seconds between supermatter accent sounds

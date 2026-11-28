@@ -35,6 +35,7 @@ public sealed partial class AmeControllerSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<AmeControllerComponent, ComponentInit>(OnInit);
+        SubscribeLocalEvent<AmeControllerComponent, ComponentStartup>(OnStartup); // Triad - see OnStartup
         SubscribeLocalEvent<AmeControllerComponent, ComponentRemove>(OnRemove);
         SubscribeLocalEvent<AmeControllerComponent, EntInsertedIntoContainerMessage>(OnItemSlotChanged);
         SubscribeLocalEvent<AmeControllerComponent, EntRemovedFromContainerMessage>(OnItemSlotChanged);
@@ -307,6 +308,14 @@ public sealed partial class AmeControllerSystem : EntitySystem
     public int GetMaxInjectionAmount(Entity<AmeControllerComponent> ent)
     {
         return int.MaxValue; // Mono
+    }
+
+    // Triad: seed on load (DrydockAppearanceComponent).
+    private void OnStartup(EntityUid uid, AmeControllerComponent controller, ComponentStartup args)
+    {
+        // Nothing to seed on an entity without an appearance, and Resolve would log an error for it.
+        if (TryComp<AppearanceComponent>(uid, out var appearance))
+            UpdateDisplay(uid, controller.Stability, controller, appearance);
     }
 
     private void UpdateDisplay(EntityUid uid, int stability, AmeControllerComponent? controller = null, AppearanceComponent? appearance = null)

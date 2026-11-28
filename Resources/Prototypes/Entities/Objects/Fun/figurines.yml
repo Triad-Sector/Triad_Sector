@@ -31,7 +31,6 @@
   - type: DeviceLinkSink
     ports:
     - Trigger
-  - type: HLPersistOnShipSave #Triad
 
 - type: entity
   parent: BaseFigurine

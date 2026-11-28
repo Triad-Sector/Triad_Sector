@@ -251,6 +251,7 @@
   id: GasTurbineGasPipe
   parent: BaseClass2AShipContrabandSilent
   categories: [ HideSpawnMenu ]
+  save: false # Triad: respawned by the turbine, which does not persist which stub is its own; a saved copy blocks the new one
   components:
   - type: Transform
     anchored: true
@@ -289,6 +290,7 @@
 - type: entity
   id: GasTurbineAlarmEntity
   categories: [ HideSpawnMenu ]
+  save: false # Triad: respawned on every load, so a saved copy is an orphan nothing can reach
   components:
   - type: AmbientSound
     volume: -2

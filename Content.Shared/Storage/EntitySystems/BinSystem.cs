@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._Triad.Drydock; // Triad
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.Examine;
@@ -23,6 +24,7 @@ public sealed partial class BinSystem : EntitySystem
     [Dependency] private SharedContainerSystem _container = default!;
     [Dependency] private SharedHandsSystem _hands = default!;
     [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private MapInitRefireSystem _mapInitRefire = default!; // Triad
 
     public const string BinContainerId = "bin-container";
 
@@ -52,6 +54,12 @@ public sealed partial class BinSystem : EntitySystem
     {
         // don't spawn on the client.
         if (_net.IsClient)
+            return;
+
+        // Triad: on a map-init re-raise (a drydock retrieve) a bin that holds anything was filled
+        // once, and a full bin fails the first insert with an error. A first map init fills as
+        // upstream does.
+        if (_mapInitRefire.Refiring && component.Items.Count > 0)
             return;
 
         var xform = Transform(uid);

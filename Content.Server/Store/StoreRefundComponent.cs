@@ -1,4 +1,5 @@
 ﻿using Content.Server.Store.Systems;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom; // Triad - for TimeOffsetSerializer
 
 namespace Content.Server.Store.Components;
 
@@ -21,8 +22,8 @@ public sealed partial class StoreRefundComponent : Component
     /// <summary>
     ///     The time this entity was bought
     /// </summary>
-    [DataField]
-    public TimeSpan? BoughtTime;
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
+    public TimeSpan? BoughtTime; // Triad - TimeOffsetSerializer: absolute game time, re-based on load so a saved ship does not carry the previous server clock
 
     /// <summary>
     ///     How long until this entity disables refund purchase?
