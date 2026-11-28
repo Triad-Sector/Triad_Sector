@@ -106,6 +106,7 @@
   - type: DeviceLinkSink
     ports:
     - Toggle
+  - type: RAC30LoopingSound
   - type: Gun
     fireRate: 25
     recoil: 5 # 1/5x
