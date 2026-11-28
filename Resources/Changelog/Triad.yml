@@ -6476,3 +6476,16 @@ Entries:
   id: 2755
   time: '2026-11-28T01:41:34.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/856
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        Shadekins now have Marish as their natural language. Disable this with
+        the 'No natural language' trait
+    - type: Tweak
+      message: >-
+        Humans now have Sol Common as their natural language. Disable this with
+        the 'No natural language' trait'
+  id: 2756
+  time: '2026-11-28T02:11:21.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/864
