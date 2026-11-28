@@ -3,6 +3,17 @@
   name: Urist McHands
   parent: BaseMobHuman
   id: MobHuman
+  # Triad Start - Languages
+  components:
+  - type: LanguageKnowledge
+    speaks:
+    - TauCetiBasic
+    - SolCommon
+    understands:
+    - TauCetiBasic
+    - SolCommon
+    naturalLanguage: SolCommon
+  # Triad End
 
 #Syndie
 - type: entity

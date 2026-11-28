@@ -188,15 +188,6 @@
     LanguageTraits: 1
   conditions:
   - !type:IsSpeciesCondition
-    species: Human
-    invert: true
-  - !type:IsSpeciesCondition
-    species: Avali
-    invert: true
-  - !type:IsSpeciesCondition
-    species: Shadekin
-    invert: true
-  - !type:IsSpeciesCondition
     species: Ovinia
     invert: true
   - !type:IsSpeciesCondition
