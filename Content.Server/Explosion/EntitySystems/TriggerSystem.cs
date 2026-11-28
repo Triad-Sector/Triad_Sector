@@ -315,7 +315,7 @@ namespace Content.Server.Explosion.EntitySystems
                             // Channel is medical if below the backup trigger threshold
                             // Otherwise, it sends it to broadband
                             var selectedChannel = _timing.CurTime >= component.BackupTriggerThreshold
-                                ? radioChannel : backupRadioChannel;
+                                ? backupRadioChannel : radioChannel;
 
                             _radioSystem.SendRadioMessage(uid, message, selectedChannel, uid, null, language);
                             component.NextTrigger = _timing.CurTime + component.RetriggerDelay;
